@@ -1,0 +1,93 @@
+# Unity generated files
+*.unity
+*.unity-meta
+*.asset
+*.asset-meta
+*.prefab
+*.prefab-meta
+*.anim
+*.anim-meta
+*.controller
+*.controller-meta
+*.mat
+*.mat-meta
+*.cubemap
+*.cubemap-meta
+*.renderTexture
+*.renderTexture-meta
+*.tga
+*.psd
+*.3ds
+*.max
+*.dae
+*.blend
+*.fbx
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.zip
+*.rar
+*.7z
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Build directories
+build/
+Build/
+builds/
+Builds/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Editor logs
+*.log
+Logs/
+
+# Cache directories
+Library/
+Temp/
+obj/
+
+# IDE files
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.vcxproj
+*.user
+*.userosscache
+*.suo
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Unity-specific
+[Tt]emp/
+[Oo]bj/
+[Ll]ibrary/
+[Pp]rojectSettings/
+[Aa]ssets/AssetStoreTools/
+[Aa]ssets/TextMesh Pro/
+
+# Package manager
+packages/
+packages-lock.json
+
+# Unity Hub
+projectSettings.asset
