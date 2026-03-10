@@ -81,9 +81,15 @@ Thumbs.db
 [Tt]emp/
 [Oo]bj/
 [Ll]ibrary/
-[Pp]rojectSettings/
 [Aa]ssets/AssetStoreTools/
 [Aa]ssets/TextMesh Pro/
+
+# Unity User Settings (个人设置，不应提交)
+UserSettings/
+*.prefs
+
+# Unity Project Settings (保留必要设置)
+# [Pp]rojectSettings/  # 大部分项目设置应该保留，但ProjectSettings.asset和VersionControl.txt通常需要
 
 # Package manager
 packages/
