@@ -30,24 +30,15 @@ public class InteractManager : Singleton<InteractManager>
         {
             currentGhost.transform.position = hit.point;
         }
-        
+
         // 射线检测周围是否有 BuildSlot，做高亮提示
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, LayerMask.GetMask("Slot")))
         {
-            if(targetRenderer == null)
-            {
-                targetRenderer = hit.transform.GetComponent<Renderer>();
-                originalColor = targetRenderer.material.color;
-                targetRenderer.material.color = Color.yellow;
-            }
+            SetHighlight(hit);
         }
         else
         {
-            if(targetRenderer != null)
-            {
-                targetRenderer.material.color = originalColor;
-                targetRenderer = null;
-            }
+            CancelHighlight();
         }
     }
 
@@ -61,6 +52,7 @@ public class InteractManager : Singleton<InteractManager>
             bool success = BuildManager.Instance.ValidatePlacement(currentData, closestSlot);
         }
         Object.Destroy(currentGhost);
+        CancelHighlight();
     }
 
     BuildSlot FindClosestSlot(/*Vector3 position, float r*/)
@@ -82,5 +74,26 @@ public class InteractManager : Singleton<InteractManager>
         // }
         #endregion
         return null;
+    }
+
+    void SetHighlight(RaycastHit hit)
+    {
+        if(targetRenderer == null)
+        {
+            if(hit.transform.GetComponent<BuildSlot>().isOccupied)
+            return;
+            targetRenderer = hit.transform.GetComponent<Renderer>();
+            originalColor = targetRenderer.material.color;
+            targetRenderer.material.color = Color.yellow;
+        }
+    }
+
+    public void CancelHighlight()
+    {
+        if(targetRenderer != null)
+        {
+            targetRenderer.material.color = originalColor;
+            targetRenderer = null;
+        }
     }
 }

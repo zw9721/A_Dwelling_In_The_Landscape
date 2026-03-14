@@ -16,5 +16,6 @@ public class BuildManager : Singleton<BuildManager>
     void ExecuteSuccess(BuildingComponentData data,BuildSlot slot)
     {
         Object.Instantiate(data.prefab,slot.snapPoint.position,slot.snapPoint.rotation);
+        slot.isOccupied = true;
     }
 }
