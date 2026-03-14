@@ -14,7 +14,7 @@ public class DragSystem : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            InteractManager.Instance.OnDrag(Input.mousePosition);
+            InteractManager.Instance.OnDrag();
         }
         
         if (Input.GetMouseButtonUp(0))

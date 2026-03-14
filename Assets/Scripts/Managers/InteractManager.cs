@@ -7,6 +7,9 @@ public class InteractManager : Singleton<InteractManager>
     private GameObject currentGhost;
     private BuildingComponentData currentData;
 
+    private Renderer targetRenderer; // 缓存命中物体的渲染器
+    private Color originalColor;     // 缓存原始颜色
+
     public void GetData(BuildingComponentData currentData)
     {
         this.currentData = currentData;
@@ -19,16 +22,32 @@ public class InteractManager : Singleton<InteractManager>
         }
     }
 
-    public void OnDrag(Vector2 mousePosition)
+    public void OnDrag()
     {
         if(currentGhost == null)
         return;
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f,
-        LayerMask.GetMask("Floor")))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f,LayerMask.GetMask("Floor")))
         {
             currentGhost.transform.position = hit.point;
-            // 射线检测周围是否有 BuildSlot，做高亮提示
+        }
+        
+        // 射线检测周围是否有 BuildSlot，做高亮提示
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, LayerMask.GetMask("Slot")))
+        {
+            if(targetRenderer == null)
+            {
+                targetRenderer = hit.transform.GetComponent<Renderer>();
+                originalColor = targetRenderer.material.color;
+                targetRenderer.material.color = Color.yellow;
+            }
+        }
+        else
+        {
+            if(targetRenderer != null)
+            {
+                targetRenderer.material.color = originalColor;
+                targetRenderer = null;
+            }
         }
     }
 
