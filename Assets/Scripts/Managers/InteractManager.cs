@@ -17,11 +17,12 @@ public class InteractManager : Singleton<InteractManager>
         if (currentData.ghostPrefab != null)
         {
             // 实例化到世界原点，无旋转
-            currentGhost = Object.Instantiate(currentData.ghostPrefab, Vector3.zero, Quaternion.identity);
-            Debug.Log("Ghost预制体已实例化：" + currentGhost.name);
+            currentGhost = Object.Instantiate(currentData.ghostPrefab, Vector3.up * 100f, Quaternion.identity);
+            //Debug.Log("Ghost预制体已实例化：" + currentGhost.name);
         }
     }
 
+    #region 拖拽和松开拖拽逻辑
     public void OnDrag()
     {
         if(currentGhost == null)
@@ -54,13 +55,15 @@ public class InteractManager : Singleton<InteractManager>
         Object.Destroy(currentGhost);
         CancelHighlight();
     }
+    #endregion
+
 
     BuildSlot FindClosestSlot(/*Vector3 position, float r*/)
     {
         // 现采用射线检测来检测槽位
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out RaycastHit info, 1000f, 1 << LayerMask.NameToLayer("Slot")))
         {
-            Debug.Log("检测到槽位：" + info.collider.name);
+            //Debug.Log("检测到槽位：" + info.collider.name);
             return info.transform.GetComponent<BuildSlot>();
         }
         #region 范围检测
@@ -76,6 +79,7 @@ public class InteractManager : Singleton<InteractManager>
         return null;
     }
 
+    #region 槽位高亮逻辑
     void SetHighlight(RaycastHit hit)
     {
         if(targetRenderer == null)
@@ -96,4 +100,5 @@ public class InteractManager : Singleton<InteractManager>
             targetRenderer = null;
         }
     }
+    #endregion
 }

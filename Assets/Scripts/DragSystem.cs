@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DragSystem : MonoBehaviour
 {
+    public GameObject endingCinematic;
+    public GameObject settlement;
+    void Start()
+    {
+        //测试GameStateManager里的SwitchState方法
+        GameStateManager.Instance.SwitchState(GameState.MainMenu);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +30,30 @@ public class DragSystem : MonoBehaviour
             InteractManager.Instance.OnRelease();
         }
     }
+
+    #region 暂时提供给UI的一些方法
+    public void StartGame()
+    {
+        GameStateManager.Instance.SwitchState(GameState.Phase1_Structure);
+        Object.Destroy(GameObject.Find("MainMenu"));
+    }
+
+    public void ToSettlement()
+    {
+        GameStateManager.Instance.SwitchState(GameState.Settlement);
+        Destroy(GameObject.Find("EndingCinematic"));
+    }
+
+    public void EndGame()
+    {
+        Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+    #endregion
     #region 3D物体拖拽
     // RaycastHit hitInfo;
     // [SerializeField]

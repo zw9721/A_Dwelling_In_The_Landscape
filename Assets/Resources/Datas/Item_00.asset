@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69087cf5c4d4b4e4cada7c4c97943efa, type: 3}
-  m_Name: Item_001
+  m_Name: Item_00
   m_EditorClassIdentifier: 
-  componentID: Item_001
+  componentID: Item_00
   type: 0
   orderIndex: 0
   prefab: {fileID: 5585152933695438515, guid: deeb66ac7023bc943aff98ce2d7a8bea, type: 3}
