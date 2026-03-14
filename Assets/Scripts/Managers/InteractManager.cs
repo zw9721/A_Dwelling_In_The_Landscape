@@ -36,7 +36,7 @@ public class InteractManager : Singleton<InteractManager>
     {
         if(currentGhost == null)
         return;
-        BuildSlot closestSlot = FindClosestSlot(currentGhost.transform.position, 2.0f);
+        BuildSlot closestSlot = FindClosestSlot(/*currentGhost.transform.position, 2.0f*/);
         if(closestSlot != null)
         {
             bool success = BuildManager.Instance.ValidatePlacement(currentData, closestSlot);
@@ -44,19 +44,24 @@ public class InteractManager : Singleton<InteractManager>
         Object.Destroy(currentGhost);
     }
 
-    BuildSlot FindClosestSlot(Vector3 position, float r)
+    BuildSlot FindClosestSlot(/*Vector3 position, float r*/)
     {
-        Collider[] colliders = new Collider[1];
-        //Vector3 distance;
-        if(Physics.OverlapSphereNonAlloc(position, r, colliders,1 << LayerMask.NameToLayer("Slot")) != 0)
+        // 现采用射线检测来检测槽位
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out RaycastHit info, 1000f, 1 << LayerMask.NameToLayer("Slot")))
         {
-            // 距离排序逻辑
-            // for(int i = 0; i < colliders.Length; i++)
-            // {
-            //     distance = position - colliders[i].gameObject.transform.position;
-            // }
-            return colliders[0].gameObject.GetComponent<BuildSlot>();
+            Debug.Log("检测到槽位：" + info.collider.name);
+            return info.transform.GetComponent<BuildSlot>();
         }
+        #region 范围检测
+        // Collider[] colliders = new Collider[1];
+        // //Vector3 distance;
+        // if(Physics.OverlapSphereNonAlloc(position, r, colliders,1 << LayerMask.NameToLayer("Slot")) != 0)
+        // {
+        //     // 距离排序逻辑
+        //     // 计算两个点之间的距离 Vector3.Distance();
+        //     return colliders[0].gameObject.GetComponent<BuildSlot>();
+        // }
+        #endregion
         return null;
     }
 }
