@@ -22,7 +22,8 @@ public class BuildManager : Singleton<BuildManager>
         return false;
         if(data.componentID != slot.requiredID)
         {
-            Debug.Log("构件错误");
+            SettlementManager.Instance.AddError();
+            UIManager.Instance.Show<UIDialogBox>().SetMessage("构件与位点不匹配");
             return false;
         }
         
@@ -41,17 +42,17 @@ public class BuildManager : Singleton<BuildManager>
             else
             {
                 SettlementManager.Instance.AddError();
-                Debug.Log("顺序错误");
+                UIManager.Instance.Show<UIDialogBox>().SetMessage("请依照工序，先完成承重构件");
             }
         }
         //游戏阶段2
         else if (state == GameState.Phase2_Decoration)
         {
-                ExecuteSuccess(data, slot);
-                currentStructureStep++;
-                Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
-                CheckPhaseProgress(); // 检查是否达到8件触发结局
-                return true;
+            ExecuteSuccess(data, slot);
+            currentStructureStep++;
+            Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
+            CheckPhaseProgress(); // 检查是否达到8件触发结局
+            return true;
         }
         
         return false;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class DragSystem : MonoBehaviour
 {
     public GameObject endingCinematic;
     public GameObject settlement;
+
     void Start()
     {
         //测试GameStateManager里的SwitchState方法
@@ -16,6 +18,11 @@ public class DragSystem : MonoBehaviour
     void Update()
     {
         Drag();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            CloseUI();
+        }
     }
 
     void Drag()
@@ -31,11 +38,14 @@ public class DragSystem : MonoBehaviour
         }
     }
 
+    #region 点击屏幕关闭提示UI
+    #endregion
+
     #region 暂时提供给UI的一些方法
     public void StartGame()
     {
         GameStateManager.Instance.SwitchState(GameState.Phase1_Structure);
-        Object.Destroy(GameObject.Find("MainMenu"));
+        Destroy(GameObject.Find("MainMenu"));
     }
 
     public void ToSettlement()
@@ -54,6 +64,14 @@ public class DragSystem : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     #endregion
+    void CloseUI()
+    {
+        GameObject ui = GameObject.Find("DialogBox(Clone)");
+        if(ui != null)
+        {
+            ui.GetComponent<UIDialogBox>().Close();
+        }
+    }
     #region 3D物体拖拽
     // RaycastHit hitInfo;
     // [SerializeField]
