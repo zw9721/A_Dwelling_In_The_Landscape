@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "A Dwelling in the Landscape.sln"
+    "dotnet.defaultSolution": "A_Dwelling_In_The_Landscape.sln"
 }
