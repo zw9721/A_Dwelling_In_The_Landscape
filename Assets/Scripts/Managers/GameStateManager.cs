@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public enum GameState { MainMenu, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
+public enum GameState { MainMenu = 1, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -18,19 +18,22 @@ public class GameStateManager : Singleton<GameStateManager>
         switch (newState)
         {
             case GameState.MainMenu:
+                UIManager.Instance.Show<UIMainMenu>();
                 break;
             case GameState.Phase1_Structure:
                 BuildManager.Instance.ResetProgress();
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
+                SettlementManager.Instance.StartTimer();
                 break;
             case GameState.Phase2_Decoration:
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Decoration);
                 break;
             case GameState.EndingCinematic:
+                SettlementManager.Instance.StopTimer();
                 GameObject.Find("DragSystem").GetComponent<DragSystem>().endingCinematic.SetActive(true);
                 break;
             case GameState.Settlement:
-                GameObject.Find("DragSystem").GetComponent<DragSystem>().settlement.SetActive(true);
+                UIManager.Instance.Show<UISettlement>().GetSettlementInfo(SettlementManager.Instance.CalculateFinalGrade());
                 break;
         }
     }

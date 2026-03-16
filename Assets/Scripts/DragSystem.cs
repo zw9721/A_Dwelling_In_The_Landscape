@@ -39,31 +39,6 @@ public class DragSystem : MonoBehaviour
     }
 
     #region 点击屏幕关闭提示UI
-    #endregion
-
-    #region 暂时提供给UI的一些方法
-    public void StartGame()
-    {
-        GameStateManager.Instance.SwitchState(GameState.Phase1_Structure);
-        Destroy(GameObject.Find("MainMenu"));
-    }
-
-    public void ToSettlement()
-    {
-        GameStateManager.Instance.SwitchState(GameState.Settlement);
-        Destroy(GameObject.Find("EndingCinematic"));
-    }
-
-    public void EndGame()
-    {
-        Application.Quit();
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(0);
-    }
-    #endregion
     void CloseUI()
     {
         GameObject ui = GameObject.Find("DialogBox(Clone)");
@@ -72,6 +47,17 @@ public class DragSystem : MonoBehaviour
             ui.GetComponent<UIDialogBox>().Close();
         }
     }
+    #endregion
+
+    #region 暂时提供给UI的一些方法
+
+    public void ToSettlement()
+    {
+        GameStateManager.Instance.SwitchState(GameState.Settlement);
+        Destroy(GameObject.Find("EndingCinematic"));
+    }
+    #endregion
+    
     #region 3D物体拖拽
     // RaycastHit hitInfo;
     // [SerializeField]

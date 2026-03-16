@@ -23,6 +23,8 @@ public class UIManager : Singleton<UIManager>
     public UIManager()
     {
         UIResources.Add(typeof(UIDialogBox), new UIInfo(){resourcePath = "UI/DialogBox", isCache = true});
+        UIResources.Add(typeof(UISettlement), new UIInfo(){resourcePath = "UI/Settlement", isCache = false});
+        UIResources.Add(typeof(UIMainMenu), new UIInfo(){resourcePath = "UI/MainMenu", isCache = false});
     }
 
     public T Show<T>()
