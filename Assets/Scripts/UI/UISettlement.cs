@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UISettlement : MonoBehaviour
+public class UISettlement : UIBase
 {
     public Text gradeText;
     public Text gameTimeText;

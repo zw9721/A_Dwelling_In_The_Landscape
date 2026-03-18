@@ -23,6 +23,7 @@ public class GameStateManager : Singleton<GameStateManager>
             case GameState.Phase1_Structure:
                 BuildManager.Instance.ResetProgress();
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
+                UIManager.Instance.Show<UIBook>();
                 SettlementManager.Instance.StartTimer();
                 break;
             case GameState.Phase2_Decoration:
