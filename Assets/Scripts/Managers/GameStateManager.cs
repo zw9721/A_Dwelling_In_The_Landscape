@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public enum GameState { MainMenu = 1, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
+public enum GameState { MainMenu, BeginingCinematic, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -18,7 +18,10 @@ public class GameStateManager : Singleton<GameStateManager>
         switch (newState)
         {
             case GameState.MainMenu:
-                UIManager.Instance.Show<UIMainMenu>();
+                //UIManager.Instance.Show<UIMainMenu>();
+                break;
+            case GameState.BeginingCinematic:
+                
                 break;
             case GameState.Phase1_Structure:
                 BuildManager.Instance.ResetProgress();
@@ -31,7 +34,7 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.EndingCinematic:
                 SettlementManager.Instance.StopTimer();
-                GameObject.Find("DragSystem").GetComponent<DragSystem>().endingCinematic.SetActive(true);
+                GameObject.Find("Game").GetComponent<Game>().endingCinematic.SetActive(true);
                 break;
             case GameState.Settlement:
                 UIManager.Instance.Show<UISettlement>().GetSettlementInfo(SettlementManager.Instance.CalculateFinalGrade());

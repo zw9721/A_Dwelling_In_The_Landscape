@@ -222,8 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentData: {fileID: 11400000, guid: a0b4eb55ac927f04ebee8535a0f65587, type: 2}
-  mySprite: {fileID: 0}
-  fixedImage: {fileID: 0}
   defaultAnchoredPosition: {x: 0, y: 0}
 --- !u!1 &4896816893623186003
 GameObject:
@@ -243,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &59175921417642625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -603,8 +601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentData: {fileID: 11400000, guid: 68d37cfe48b9fb54a9c8ff8c10a9d043, type: 2}
-  mySprite: {fileID: 0}
-  fixedImage: {fileID: 0}
   defaultAnchoredPosition: {x: 0, y: 0}
 --- !u!1 &8692552918268677857
 GameObject:

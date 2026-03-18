@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class DragSystem : MonoBehaviour
+public class Game : MonoBehaviour
 {
     public GameObject endingCinematic;
-    public GameObject settlement;
+    private PlayableDirector timeLine;
 
     void Start()
     {
         //测试GameStateManager里的SwitchState方法
         GameStateManager.Instance.SwitchState(GameState.MainMenu);
+        timeLine = GetComponent<PlayableDirector>();
     }
     // Update is called once per frame
     void Update()

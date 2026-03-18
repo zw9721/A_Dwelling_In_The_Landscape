@@ -28,7 +28,7 @@ public class InteractManager : Singleton<InteractManager>
     {
         if(currentGhost == null)
         return;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f,LayerMask.GetMask("Floor")))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f,LayerMask.GetMask("Floor")))
         {
             currentGhost.transform.position = hit.point;
         }
