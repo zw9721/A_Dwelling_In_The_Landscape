@@ -18,6 +18,7 @@ public class UIFixedImage : MonoBehaviour
     public void SetFixedImage(RectTransform target, Sprite targerSprite)
     {
         transform.SetParent(target.parent);
+        transform.SetAsFirstSibling();
         currentRectTransform.anchoredPosition = target.anchoredPosition;
         image.sprite = targerSprite;
         image.SetNativeSize();

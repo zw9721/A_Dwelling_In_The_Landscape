@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6344829235880228825}
   - component: {fileID: 8655522016726313300}
   - component: {fileID: 7084239297849551927}
-  - component: {fileID: 614211519878268818}
+  - component: {fileID: 3040731621227511395}
   m_Layer: 5
-  m_Name: DialogBox
+  m_Name: StartTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &614211519878268818
+--- !u!114 &3040731621227511395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 758160091228776389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b6e4e890f595444ad553b7d8f79267, type: 3}
+  m_Script: {fileID: 11500000, guid: e0e80957e2949dc40a14e90b29bc9fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1663306861122142812
@@ -315,9 +315,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 614211519878268818}
-        m_TargetAssemblyTypeName: UIDialogBox, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 3040731621227511395}
+        m_TargetAssemblyTypeName: UIStartTutorial, Assembly-CSharp
+        m_MethodName: GoNextDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

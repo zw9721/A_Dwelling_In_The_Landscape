@@ -26,6 +26,7 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UISettlement), new UIInfo(){resourcePath = "UI/Settlement", isCache = false});
         //UIResources.Add(typeof(UIMainMenu), new UIInfo(){resourcePath = "UI/MainMenu", isCache = false});
         UIResources.Add(typeof(UIBook), new UIInfo(){resourcePath = "UI/Book", isCache = true});
+        UIResources.Add(typeof(UIStartTutorial), new UIInfo(){resourcePath = "UI/StartTutorial", isCache = false});
     }
 
     public T Show<T>()

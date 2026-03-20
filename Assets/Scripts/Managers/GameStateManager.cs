@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public enum GameState { MainMenu, BeginingCinematic, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
+public enum GameState { MainMenu, BeginingCinematic, StartTutorial, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -21,12 +21,15 @@ public class GameStateManager : Singleton<GameStateManager>
                 //UIManager.Instance.Show<UIMainMenu>();
                 break;
             case GameState.BeginingCinematic:
-                
+                UIManager.Instance.Show<UIBook>();
+                break;
+            case GameState.StartTutorial:
+                UIManager.Instance.Show<UIStartTutorial>().GoNextDialog();
                 break;
             case GameState.Phase1_Structure:
                 BuildManager.Instance.ResetProgress();
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
-                UIManager.Instance.Show<UIBook>();
+                //UIManager.Instance.Show<UIBook>();
                 SettlementManager.Instance.StartTimer();
                 break;
             case GameState.Phase2_Decoration:
@@ -34,11 +37,12 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.EndingCinematic:
                 SettlementManager.Instance.StopTimer();
-                GameObject.Find("Game").GetComponent<Game>().endingCinematic.SetActive(true);
+                GameObject.Find("DragSystem").GetComponent<DragSystem>().endingCinematic.SetActive(true);
                 break;
             case GameState.Settlement:
                 UIManager.Instance.Show<UISettlement>().GetSettlementInfo(SettlementManager.Instance.CalculateFinalGrade());
                 break;
         }
+        Debug.Log("现在的阶段是" + CurrentState);
     }
 }
