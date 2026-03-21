@@ -22,11 +22,13 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.BeginingCinematic:
                 UIManager.Instance.Show<UIBook>();
+                AnimationManager.Instance.Play();
                 break;
             case GameState.StartTutorial:
                 UIManager.Instance.Show<UIStartTutorial>().GoNextDialog();
                 break;
             case GameState.Phase1_Structure:
+                AnimationManager.Instance.Play();
                 BuildManager.Instance.ResetProgress();
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
                 //UIManager.Instance.Show<UIBook>();
@@ -37,6 +39,7 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.EndingCinematic:
                 SettlementManager.Instance.StopTimer();
+                UIManager.Instance.Close(typeof(UIBook));
                 GameObject.Find("DragSystem").GetComponent<DragSystem>().endingCinematic.SetActive(true);
                 break;
             case GameState.Settlement:

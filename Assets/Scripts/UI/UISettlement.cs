@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,14 @@ public class UISettlement : UIBase
     public Text gradeText;
     public Text gameTimeText;
     public Text errorCountText;
+    private int min;
+    private int sec;
     public void GetSettlementInfo(Grade grade)
     {
-        gameTimeText.text = "游戏时间：" + (SettlementManager.Instance.TimeElapsed / 60f).ToString();
-        errorCountText.text = "错误次数：" + SettlementManager.Instance.ErrorCount.ToString();
+        min = (int)(SettlementManager.Instance.TimeElapsed / 60f);
+        sec = (int)(SettlementManager.Instance.TimeElapsed % 60f);
+        gameTimeText.text =string.Format("{0}分{1}秒", min, sec);
+        errorCountText.text = SettlementManager.Instance.ErrorCount.ToString();
         switch (grade)
         {
             case Grade.Grandmaster:

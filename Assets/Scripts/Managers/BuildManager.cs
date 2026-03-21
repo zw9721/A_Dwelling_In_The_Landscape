@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class BuildManager : Singleton<BuildManager>
 {
     public int currentStructureStep = 0;
+    public event Action<BuildingComponentData> OnBuildSuccess;// 成功事件
     private GameObject[] structureSlots;//用来存储场景中的Structure槽位
     private GameObject[] decorationSlots;//用来存储场景中的Decoration槽位
     private GameState state;
@@ -37,6 +39,7 @@ public class BuildManager : Singleton<BuildManager>
                 currentStructureStep++;
                 Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
                 CheckPhaseProgress();
+                OnBuildSuccess(data);
                 return true;
             }
             else
@@ -52,6 +55,7 @@ public class BuildManager : Singleton<BuildManager>
             currentStructureStep++;
             Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
             CheckPhaseProgress(); // 检查是否达到8件触发结局
+            OnBuildSuccess(data);
             return true;
         }
         
@@ -61,7 +65,7 @@ public class BuildManager : Singleton<BuildManager>
     #region 吸附成功的校验逻辑
     void ExecuteSuccess(BuildingComponentData data,BuildSlot slot)
     {
-        Object.Instantiate(data.prefab,slot.snapPoint.position,slot.snapPoint.rotation);
+        UnityEngine.Object.Instantiate(data.prefab,slot.snapPoint.position,slot.snapPoint.rotation);
         slot.isOccupied = true;
     }
 

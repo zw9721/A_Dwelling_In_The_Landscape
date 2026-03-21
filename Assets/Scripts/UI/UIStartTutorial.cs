@@ -10,7 +10,7 @@ public class UIStartTutorial : UIDialogBox
     void Awake()
     {
         //GetComponent<Game>().GoNext += GoNextDialog;
-        messages.Add("新手教程1");
+        messages.Add("新手教程1(点击鼠标左键跳过当前提示框)");
         messages.Add("新手教程2");
         messages.Add("点击右下角的古籍打开建造菜单，即可从中拖出构件修复建筑");
         messages.Add("");
