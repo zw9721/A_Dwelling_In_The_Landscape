@@ -15,8 +15,25 @@ public class AnimationManager : SingletonMono<AnimationManager>
         playableDirector = gameObject.AddComponent<PlayableDirector>();
         AnimResource.Add(GameState.BeginingCinematic,"PlayableAsset/BeginingCinematic");
         AnimResource.Add(GameState.Phase1_Structure,"PlayableAsset/Phase1");
-        animatorBindings.Add("UIMoveTrack", GameObject.Find("MainMenu").GetComponent<Animator>());
-        animatorBindings.Add("CameraMoveTrack", GameObject.Find("Main Camera").GetComponent<Animator>());
+        AnimResource.Add(GameState.Phase2_Decoration,"PlayableAsset/Phase2");
+        AnimResource.Add(GameState.EndingCinematic,"PlayableAsset/EndingCinematic");
+    }
+
+    private void RefreshBindings()
+    {
+        animatorBindings.Clear(); // 清除旧的、可能已经丢失的引用
+
+        GameObject mainMenu = GameObject.Find("MainMenu");
+        if (mainMenu != null)
+        {
+            animatorBindings.Add("UIMoveTrack", mainMenu.GetComponent<Animator>());
+        }
+
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        if (mainCamera != null)
+        {
+            animatorBindings.Add("CameraMoveTrack", mainCamera.GetComponent<Animator>());
+        }
     }
 
     public void Play()
@@ -24,6 +41,8 @@ public class AnimationManager : SingletonMono<AnimationManager>
         GameState currentState = GameStateManager.Instance.CurrentState;
         if (AnimResource.ContainsKey(currentState))
         {
+            // 每次播放前重新获取当前场景最新的对象引用
+            RefreshBindings();
             PlayableAsset timeLine = Resources.Load<PlayableAsset>(AnimResource[GameStateManager.Instance.CurrentState]);
             // 绑定轨道到目标Animator
             BindAnimatorToTimelineTracks(timeLine);

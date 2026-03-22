@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 public enum GameState { MainMenu, BeginingCinematic, StartTutorial, Phase1_Structure,Phase2_Decoration, EndingCinematic, Settlement }
 
-public class GameStateManager : Singleton<GameStateManager>
+public class GameStateManager : SingletonMono<GameStateManager>
 {
     public GameState CurrentState { get; private set; }
 
@@ -18,7 +19,6 @@ public class GameStateManager : Singleton<GameStateManager>
         switch (newState)
         {
             case GameState.MainMenu:
-                //UIManager.Instance.Show<UIMainMenu>();
                 break;
             case GameState.BeginingCinematic:
                 UIManager.Instance.Show<UIBook>();
@@ -28,24 +28,44 @@ public class GameStateManager : Singleton<GameStateManager>
                 UIManager.Instance.Show<UIStartTutorial>().GoNextDialog();
                 break;
             case GameState.Phase1_Structure:
-                AnimationManager.Instance.Play();
-                BuildManager.Instance.ResetProgress();
-                BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
-                //UIManager.Instance.Show<UIBook>();
-                SettlementManager.Instance.StartTimer();
+                StartCoroutine(Phase1_Structure());
                 break;
             case GameState.Phase2_Decoration:
                 BuildManager.Instance.ActivateSlotsByType(ComponentType.Decoration);
+                UIManager.Instance.Show<UIDialogBox>().SetMessage("第二阶段：铸其魂（文化装饰修复）");
+                AnimationManager.Instance.Play();
                 break;
             case GameState.EndingCinematic:
-                SettlementManager.Instance.StopTimer();
-                UIManager.Instance.Close(typeof(UIBook));
-                GameObject.Find("DragSystem").GetComponent<DragSystem>().endingCinematic.SetActive(true);
+                StartCoroutine(EndingCinematic());
                 break;
             case GameState.Settlement:
                 UIManager.Instance.Show<UISettlement>().GetSettlementInfo(SettlementManager.Instance.CalculateFinalGrade());
                 break;
         }
         Debug.Log("现在的阶段是" + CurrentState);
+    }
+
+    IEnumerator Phase1_Structure()
+    {
+        yield return new WaitForSeconds(2f);
+        UIManager.Instance.Show<UIDialogBox>().SetMessage("第一阶段：修其骨（建筑结构修复）");
+        AnimationManager.Instance.Play();
+        BuildManager.Instance.ResetProgress();
+        BuildManager.Instance.ActivateSlotsByType(ComponentType.Structure);// 仅激活结构件的吸附槽
+        SettlementManager.Instance.StartTimer();
+        yield return null;
+    }
+    IEnumerator EndingCinematic()
+    {
+        SettlementManager.Instance.StopTimer();
+        UIManager.Instance.Close(typeof(UIBook));
+        yield return new WaitForSeconds(0.5f);
+        UIManager.Instance.Show<UIDialogBox>().SetMessage("山水之间，心安是家。");
+        AnimationManager.Instance.Play();
+        yield return new WaitForSeconds(5f);
+        UIManager.Instance.Close(typeof(UIDialogBox));
+        yield return new WaitForSeconds(1f);
+        SwitchState(GameState.Settlement);
+        yield return null;
     }
 }

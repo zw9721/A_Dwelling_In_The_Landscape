@@ -14,8 +14,8 @@ public class DragSystem : MonoBehaviour
     void Start()
     {
         //测试GameStateManager里的SwitchState方法
-        GameStateManager.Instance.SwitchState(GameState.MainMenu);
-        timeLine = GetComponent<PlayableDirector>();
+        //GameStateManager.Instance.SwitchState(GameState.MainMenu);
+        //timeLine = GetComponent<PlayableDirector>();
     }
     // Update is called once per frame
     void Update()
@@ -55,14 +55,6 @@ public class DragSystem : MonoBehaviour
     //         ui.GetComponent<UIDialogBox>().Close();
     //     }
     // }
-    #endregion
-
-    #region 暂时提供给UI的一些方法
-    public void ToSettlement()
-    {
-        GameStateManager.Instance.SwitchState(GameState.Settlement);
-        Destroy(GameObject.Find("EndingCinematic"));
-    }
     #endregion
     
     #region 3D物体拖拽
