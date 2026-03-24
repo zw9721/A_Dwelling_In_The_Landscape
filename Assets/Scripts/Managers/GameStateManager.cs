@@ -31,9 +31,7 @@ public class GameStateManager : SingletonMono<GameStateManager>
                 StartCoroutine(Phase1_Structure());
                 break;
             case GameState.Phase2_Decoration:
-                BuildManager.Instance.ActivateSlotsByType(ComponentType.Decoration);
-                UIManager.Instance.Show<UIDialogBox>().SetMessage("第二阶段：铸其魂（文化装饰修复）");
-                AnimationManager.Instance.Play();
+                StartCoroutine(Phase2_Decoration());
                 break;
             case GameState.EndingCinematic:
                 StartCoroutine(EndingCinematic());
@@ -55,6 +53,15 @@ public class GameStateManager : SingletonMono<GameStateManager>
         SettlementManager.Instance.StartTimer();
         yield return null;
     }
+
+    IEnumerator Phase2_Decoration()
+    {
+        yield return new WaitForSeconds(0.5f);
+        BuildManager.Instance.ActivateSlotsByType(ComponentType.Decoration);
+        UIManager.Instance.Show<UIDialogBox>().SetMessage("第二阶段：铸其魂（文化装饰修复）");
+        AnimationManager.Instance.Play();
+    }
+    
     IEnumerator EndingCinematic()
     {
         SettlementManager.Instance.StopTimer();

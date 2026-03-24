@@ -14,6 +14,7 @@ public class VisualAudioModule : SingletonMono<VisualAudioModule>
 
     private void HandleBuildSuccess(BuildingComponentData data)
     {
+        print("播放音效");
         AudioSource.PlayClipAtPoint(data.snapSFX,Camera.main.transform.position);
 
         if (GameStateManager.Instance.CurrentState == GameState.Phase2_Decoration)

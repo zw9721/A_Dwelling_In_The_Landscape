@@ -39,7 +39,7 @@ public class BuildManager : Singleton<BuildManager>
                 currentStructureStep++;
                 Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
                 CheckPhaseProgress();
-                OnBuildSuccess(data);
+                OnBuildSuccess?.Invoke(data);
                 return true;
             }
             else
@@ -55,7 +55,7 @@ public class BuildManager : Singleton<BuildManager>
             currentStructureStep++;
             Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
             CheckPhaseProgress(); // 检查是否达到8件触发结局
-            OnBuildSuccess(data);
+            OnBuildSuccess?.Invoke(data);
             return true;
         }
         
