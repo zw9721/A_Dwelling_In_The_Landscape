@@ -6,6 +6,7 @@ public class BuildSlot : MonoBehaviour
 {
     public string requiredID;
     public int orderIndex; // 建造顺序要求
+    public ComponentSmallType orderType;
     public bool isOccupied = false;
     public Transform snapPoint;
     //private Color originalColor;     // 缓存原始颜色
@@ -13,7 +14,7 @@ public class BuildSlot : MonoBehaviour
 
     void Awake()
     {
-        //snapPoint = transform;
+        snapPoint = transform;
         //originalColor = GetComponent<Renderer>().material.color;
         outline = GetComponent<Outline>();
         outline.enabled = false;

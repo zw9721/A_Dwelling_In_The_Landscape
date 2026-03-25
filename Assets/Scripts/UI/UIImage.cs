@@ -27,6 +27,7 @@ public class UIImage : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, ID
         fixedImage = GameObject.Find("FixedImage").GetComponent<UIFixedImage>();
         rectTransform = GetComponent<RectTransform>();
         defaultAnchoredPosition = rectTransform.anchoredPosition;
+        gameObject.GetComponent<Image>().sprite = currentData.uiIcon;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

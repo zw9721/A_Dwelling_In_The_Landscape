@@ -15,7 +15,7 @@ MonoBehaviour:
   componentID: Triangle
   type: 0
   orderIndex: 0
-  prefab: {fileID: 5183183672147115995, guid: c5fb716b32f8e7245ba1a3a34064e23c, type: 3}
+  prefab: {fileID: 1801704666597389335, guid: c5fb716b32f8e7245ba1a3a34064e23c, type: 3}
   ghostPrefab: {fileID: 8293721420091575499, guid: 455f7a105c0cebb4eb79b72069713cf5,
     type: 3}
   uiIcon: {fileID: 0}

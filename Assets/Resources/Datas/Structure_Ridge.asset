@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69087cf5c4d4b4e4cada7c4c97943efa, type: 3}
-  m_Name: "\u5730\u57FA"
+  m_Name: Structure_Ridge
   m_EditorClassIdentifier: 
-  componentID: "\u5730\u57FA"
+  componentID: Ridge
   type: 0
   orderIndex: 0
-  prefab: {fileID: 6761713584062048047, guid: 8bd8f7013a3da2e4e9461f2cad09cca9, type: 3}
-  ghostPrefab: {fileID: 6761713584062048047, guid: 8bd8f7013a3da2e4e9461f2cad09cca9,
+  prefab: {fileID: 1644590914233044295, guid: df270aaa8de133d46b598c9600d33966, type: 3}
+  ghostPrefab: {fileID: 8506018361002004742, guid: 31a08b18c8604aa499472d44c22e80c5,
     type: 3}
   uiIcon: {fileID: 0}
   snapSFX: {fileID: 0}

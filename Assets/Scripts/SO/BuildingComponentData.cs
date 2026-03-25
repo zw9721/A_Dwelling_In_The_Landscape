@@ -20,3 +20,4 @@ public class BuildingComponentData : ScriptableObject
  public string loreDescription; // 古籍科普文字（如“柱——承重之本”）
 }
 public enum ComponentType { Structure, Decoration }
+public enum ComponentSmallType{Pillar, Bridge, Triangle, Tile, Ridge, Decoration}

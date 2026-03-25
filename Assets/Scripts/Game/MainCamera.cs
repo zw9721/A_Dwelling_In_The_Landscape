@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    void ToSettlement()
-    {
-        GameStateManager.Instance.SwitchState(GameState.Settlement);
-    }
+    // void ToSettlement()
+    // {
+    //     GameStateManager.Instance.SwitchState(GameState.Settlement);
+    // }
 }

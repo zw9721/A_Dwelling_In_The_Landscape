@@ -14,7 +14,7 @@ public class DragSystem : MonoBehaviour
     void Start()
     {
         //测试GameStateManager里的SwitchState方法
-        //GameStateManager.Instance.SwitchState(GameState.MainMenu);
+        GameStateManager.Instance.SwitchState(GameState.MainMenu);
         //timeLine = GetComponent<PlayableDirector>();
     }
     // Update is called once per frame
