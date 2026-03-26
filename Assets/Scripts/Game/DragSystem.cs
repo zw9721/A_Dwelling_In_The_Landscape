@@ -16,6 +16,8 @@ public class DragSystem : MonoBehaviour
         //测试GameStateManager里的SwitchState方法
         GameStateManager.Instance.SwitchState(GameState.MainMenu);
         //timeLine = GetComponent<PlayableDirector>();
+        //唤醒VisualAudioModule
+        VisualAudioModule.Instance.WakeUp();
     }
     // Update is called once per frame
     void Update()

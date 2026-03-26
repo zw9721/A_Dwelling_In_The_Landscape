@@ -59,6 +59,7 @@ public class BuildManager : Singleton<BuildManager>
             Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
             CheckPhaseProgress(); // 检查是否达到8件触发结局
             OnBuildSuccess?.Invoke(data);
+            slot.gameObject.SetActive(false);
             return true;
         }
         
@@ -85,7 +86,7 @@ public class BuildManager : Singleton<BuildManager>
                 }
             break;
             case GameState.Phase2_Decoration:
-            if(currentStructureStep >= 8)
+            if(currentStructureStep >= 10)
                 {
                     GameStateManager.Instance.SwitchState(GameState.EndingCinematic);
                     Debug.Log("切换游戏阶段至：" + GameStateManager.Instance.CurrentState);
@@ -118,18 +119,25 @@ public class BuildManager : Singleton<BuildManager>
     public void ActivateSlotsByType(ComponentType type)
     {
         Collider tempCollider;
+        Renderer tempRenderer;
         Thread.Sleep(100);
         for(int i = 0; i < structureSlots.Length; i++)
         {
             tempCollider = structureSlots[i].GetComponent<Collider>();
             if(tempCollider.enabled == (type == ComponentType.Structure ? false : true))
             tempCollider.enabled = type == ComponentType.Structure ? true : false;
+            tempRenderer = structureSlots[i].GetComponent<Renderer>();
+            if(tempRenderer.enabled == (type == ComponentType.Structure ? false : true))
+            tempRenderer.enabled = type == ComponentType.Structure ? true : false;
         }
         for(int i = 0; i < decorationSlots.Length; i++)
         {
             tempCollider = decorationSlots[i].GetComponent<Collider>();
             if(tempCollider.enabled == (type == ComponentType.Decoration ? false : true))
             tempCollider.enabled = type == ComponentType.Decoration ? true : false;
+            tempRenderer = decorationSlots[i].GetComponent<Renderer>();
+            if(tempRenderer.enabled == (type == ComponentType.Decoration ? false : true))
+            tempRenderer.enabled = type == ComponentType.Decoration ? true : false;
         }
     }
     #endregion

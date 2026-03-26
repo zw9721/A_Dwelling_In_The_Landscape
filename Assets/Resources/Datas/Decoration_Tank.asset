@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69087cf5c4d4b4e4cada7c4c97943efa, type: 3}
+  m_Name: Decoration_Tank
+  m_EditorClassIdentifier: 
+  componentID: Tank
+  type: 1
+  orderIndex: 0
+  prefab: {fileID: 7902069561863906320, guid: 30bef90ee26176346a8e1b32b4d3de9c, type: 3}
+  ghostPrefab: {fileID: 7902069561863906320, guid: 72be47fd69eb22e44a42f3e72db04e6b,
+    type: 3}
+  uiIcon: {fileID: 0}
+  snapSFX: {fileID: 8300000, guid: bd79eafa7f4fdbb4dbffed66a91a0bc4, type: 3}
+  loreDescription: 

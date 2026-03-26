@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69087cf5c4d4b4e4cada7c4c97943efa, type: 3}
+  m_Name: Decoration_Table
+  m_EditorClassIdentifier: 
+  componentID: Table
+  type: 1
+  orderIndex: 0
+  prefab: {fileID: 8174109352415819052, guid: 5a873aba6819d5f4f85929eb14b7aa33, type: 3}
+  ghostPrefab: {fileID: 8174109352415819052, guid: 270e6b35f9df594459880785738549b0,
+    type: 3}
+  uiIcon: {fileID: 0}
+  snapSFX: {fileID: 8300000, guid: f0c074b9da169c54e9cb5443f84ebb7a, type: 3}
+  loreDescription: 

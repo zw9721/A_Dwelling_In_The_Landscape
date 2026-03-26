@@ -18,6 +18,6 @@ MonoBehaviour:
   prefab: {fileID: 2611495503643122439, guid: a29a164c76dc74347899e7da7daea54e, type: 3}
   ghostPrefab: {fileID: 4382642197993171205, guid: ff357fb34cd22534cb5cc0f906e7c74d,
     type: 3}
-  uiIcon: {fileID: 0}
-  snapSFX: {fileID: 0}
+  uiIcon: {fileID: 21300000, guid: e323d628f10a14f42ba8b9d6e2894318, type: 3}
+  snapSFX: {fileID: 8300000, guid: 4a00e5e58fdaafe4c97e95c43112cf96, type: 3}
   loreDescription: 

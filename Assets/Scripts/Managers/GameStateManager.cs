@@ -9,13 +9,15 @@ public enum GameState { MainMenu = 1, BeginingCinematic, StartTutorial, Phase1_S
 public class GameStateManager : SingletonMono<GameStateManager>
 {
     public GameState CurrentState { get; private set; }
+    public event Action switchState;
 
     public void SwitchState(GameState newState)
     {
         if(CurrentState == newState)
         return;
         CurrentState = newState;
-
+        switchState?.Invoke();
+        
         switch (newState)
         {
             case GameState.MainMenu:
