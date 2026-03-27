@@ -10,9 +10,11 @@ public class UIStartTutorial : UIDialogBox
     void Awake()
     {
         //GetComponent<Game>().GoNext += GoNextDialog;
-        messages.Add("新手教程1(点击鼠标左键跳过当前提示框)");
-        messages.Add("新手教程2");
-        messages.Add("点击右下角的古籍打开建造菜单，即可从中拖出构件修复建筑");
+        messages.Add("山水间，一座百年徽派民居风雨倾颓，静待修复。\n(点击鼠标左键跳过当前提示框)");
+        messages.Add("你将化身古建筑修复师，参照古籍《营造法式》，\n分两阶段修复这座老宅。");
+        messages.Add("第一阶段：修其骨 —— 按立柱→架梁→装梁架→铺瓦→安屋脊顺序，复原建筑结构。");
+        messages.Add("第二阶段：铸其魂 —— 装点窗棂、陈设器物，重拾徽州人文烟火。");
+        messages.Add("点击右下角的古籍打开建造菜单，即可从中拖出构件修复建筑。");
         messages.Add("");
     }
 

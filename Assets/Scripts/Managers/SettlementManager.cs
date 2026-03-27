@@ -31,10 +31,12 @@ public class SettlementManager : Singleton<SettlementManager>
     public void StartTimer()
     {
         timeElapsed = Time.time;//记录进入游戏场景之前的时间
+        UIManager.Instance.Show<UITimer>();
     }
 
     public void StopTimer()
     {
         timeElapsed = Time.time - timeElapsed;//这时用总时间减去“进入游戏场景之前的时间”得到进入游戏场景的时间
+        UIManager.Instance.Close(typeof(UITimer));
     }
 }

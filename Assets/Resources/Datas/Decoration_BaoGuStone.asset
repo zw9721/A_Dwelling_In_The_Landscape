@@ -16,8 +16,11 @@ MonoBehaviour:
   type: 1
   orderIndex: 0
   prefab: {fileID: 7143321322753004584, guid: edd1799f82e68924b857a18461ebfaf1, type: 3}
-  ghostPrefab: {fileID: 7143321322753004584, guid: 7edecbc0e137d8345b87580ef8610367,
+  ghostPrefab: {fileID: 2136779695920839558, guid: 7edecbc0e137d8345b87580ef8610367,
     type: 3}
   uiIcon: {fileID: 0}
   snapSFX: {fileID: 8300000, guid: 4a00e5e58fdaafe4c97e95c43112cf96, type: 3}
-  loreDescription: 
+  currentDescription: 0
+  loreDescription:
+  - "\u62B1\u9F13\u77F3 \u2014\u2014 \u95E8\u5EAD\u5A01\u4EEA\uFF0C\u77F3\u9F13\u627F\u5B89\uFF0C\u62A4\u5B85\u4F51\u5BB6\u3002"
+  - "\u95E8\u5F53\u6237\u5BF9\uFF0C\u77F3\u9F13\u4F20\u58F0\uFF0C\u5F70\u663E\u4E16\u5BB6\u98CE\u8303\u3002"

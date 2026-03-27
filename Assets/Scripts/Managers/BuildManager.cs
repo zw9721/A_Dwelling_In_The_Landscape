@@ -26,7 +26,7 @@ public class BuildManager : Singleton<BuildManager>
         if(data.componentID != slot.requiredID)
         {
             SettlementManager.Instance.AddError();
-            UIManager.Instance.Show<UIDialogBox>().SetMessage("构件与位点不匹配");
+            UIManager.Instance.Show<UIDialogBox>().SetMessage("构件与位点不匹配", false);
             return false;
         }
         
@@ -38,17 +38,18 @@ public class BuildManager : Singleton<BuildManager>
             {
                 ExecuteSuccess(data, slot);
                 currentStructureStep++;
-                CheckSwitchType();
                 Debug.LogFormat("当前游戏阶段：{0}，当前完成的步骤：{1}", state, currentStructureStep);
                 CheckPhaseProgress();
                 OnBuildSuccess?.Invoke(data);
                 slot.gameObject.SetActive(false);
+                UIManager.Instance.Show<UIDialogBox>().SetMessage(data.GetDescription(), true);
+                CheckSwitchType();
                 return true;
             }
             else
             {
                 SettlementManager.Instance.AddError();
-                UIManager.Instance.Show<UIDialogBox>().SetMessage("请依照工序，先完成承重构件");
+                UIManager.Instance.Show<UIDialogBox>().SetMessage("请依照工序，先完成承重构件", false);
             }
         }
         //游戏阶段2
@@ -60,6 +61,7 @@ public class BuildManager : Singleton<BuildManager>
             CheckPhaseProgress(); // 检查是否达到8件触发结局
             OnBuildSuccess?.Invoke(data);
             slot.gameObject.SetActive(false);
+            UIManager.Instance.Show<UIDialogBox>().SetMessage(data.GetDescription(), true);
             return true;
         }
         
@@ -204,6 +206,15 @@ public class BuildManager : Singleton<BuildManager>
         }
     }
 
+    public void ResetAllBuildingComponentDescription()
+    {
+        BuildingComponentData[] allComponentDatas = Resources.LoadAll<BuildingComponentData>("Datas");
+        foreach (var data in allComponentDatas)
+        {
+            data.currentDescription = 0;
+        }
+    }
+
     // 旧的校验逻辑
     // public bool ValidatePlacement(BuildingComponentData data,BuildSlot slot)
     // {
@@ -215,7 +226,7 @@ public class BuildManager : Singleton<BuildManager>
     //         UIManager.Instance.Show<UIDialogBox>().SetMessage("构件与位点不匹配");
     //         return false;
     //     }
-        
+
     //     state = GameStateManager.Instance.CurrentState;
     //     //游戏阶段1
     //     if (state == GameState.Phase1_Structure)
@@ -245,7 +256,7 @@ public class BuildManager : Singleton<BuildManager>
     //         OnBuildSuccess?.Invoke(data);
     //         return true;
     //     }
-        
+
     //     return false;
     // }
 }

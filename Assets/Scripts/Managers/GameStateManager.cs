@@ -63,13 +63,14 @@ public class GameStateManager : SingletonMono<GameStateManager>
         yield return new WaitForSeconds(2f);
         UIManager.Instance.Show<UIDialogBox>().SetMessage("第一阶段：修其骨（建筑结构修复）");
         AnimationManager.Instance.Play();
+        yield return new WaitForSeconds(3f);
         SettlementManager.Instance.StartTimer();
         yield return null;
     }
 
     IEnumerator Phase2_Decoration()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3f);
         BuildManager.Instance.ActivateSlotsByType(ComponentType.Decoration);
         UIManager.Instance.Show<UIDialogBox>().SetMessage("第二阶段：铸其魂（文化装饰修复）");
         AnimationManager.Instance.Play();
@@ -79,12 +80,13 @@ public class GameStateManager : SingletonMono<GameStateManager>
     {
         SettlementManager.Instance.StopTimer();
         UIManager.Instance.Close(typeof(UIBook));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3f);
         UIManager.Instance.Show<UIDialogBox>().SetMessage("山水之间，心安是家。");
         AnimationManager.Instance.Play();
         yield return new WaitForSeconds(5f);
         UIManager.Instance.Close(typeof(UIDialogBox));
         yield return new WaitForSeconds(1f);
+        BuildManager.Instance.ResetAllBuildingComponentDescription();
         SwitchState(GameState.Settlement);
         yield return null;
     }

@@ -15,9 +15,11 @@ MonoBehaviour:
   componentID: Door
   type: 1
   orderIndex: 0
-  prefab: {fileID: 3325158242863646749, guid: ddf144f9d900bec4d99ae39099f3eaed, type: 3}
-  ghostPrefab: {fileID: 6226527482468212885, guid: 3c6dddd5257ddaa44904cd2b90a2a3a5,
+  prefab: {fileID: 3388774560533409053, guid: 5f3ae26290916cd4190f246d2f8ea64e, type: 3}
+  ghostPrefab: {fileID: 3388774560533409053, guid: e87b8aa2ebc6755459e77a8f3d48c52e,
     type: 3}
   uiIcon: {fileID: 0}
-  snapSFX: {fileID: 8300000, guid: bd79eafa7f4fdbb4dbffed66a91a0bc4, type: 3}
-  loreDescription: 
+  snapSFX: {fileID: 8300000, guid: f0c074b9da169c54e9cb5443f84ebb7a, type: 3}
+  currentDescription: 0
+  loreDescription:
+  - "\u95E8 \u2014\u2014 \u6731\u95E8\u8F7B\u542F\uFF0C\u8FCE\u798F\u7EB3\u7965\uFF0C\u627F\u7EED\u5FBD\u5DDE\u793C\u5E8F\u3002"

@@ -20,4 +20,5 @@ MonoBehaviour:
     type: 3}
   uiIcon: {fileID: 0}
   snapSFX: {fileID: 0}
-  loreDescription: 
+  currentDescription: 0
+  loreDescription: []

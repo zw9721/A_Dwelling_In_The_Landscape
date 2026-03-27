@@ -20,4 +20,6 @@ MonoBehaviour:
     type: 3}
   uiIcon: {fileID: 0}
   snapSFX: {fileID: 8300000, guid: f0c074b9da169c54e9cb5443f84ebb7a, type: 3}
-  loreDescription: 
+  currentDescription: 0
+  loreDescription:
+  - "\u7167\u58C1 \u2014\u2014 \u5F71\u58C1\u906E\u5C18\uFF0C\u85CF\u98CE\u805A\u6C14\uFF0C\u5B88\u62A4\u5BB6\u5B85\u745E\u6C14\u3002"

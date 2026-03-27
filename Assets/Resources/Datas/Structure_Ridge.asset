@@ -19,5 +19,7 @@ MonoBehaviour:
   ghostPrefab: {fileID: 8506018361002004742, guid: 31a08b18c8604aa499472d44c22e80c5,
     type: 3}
   uiIcon: {fileID: 21300000, guid: 43c4744908dcb254f8062740b894684d, type: 3}
-  snapSFX: {fileID: 8300000, guid: 0e8dad15690591a44ad88e712473facb, type: 3}
-  loreDescription: 
+  snapSFX: {fileID: 8300000, guid: bd79eafa7f4fdbb4dbffed66a91a0bc4, type: 3}
+  currentDescription: 0
+  loreDescription:
+  - "\u5C4B\u810A \u2014\u2014 \u7EB5\u8D2F\u5C4B\u5DC5\uFF0C\u9547\u5B85\u5B89\u5B85\uFF0C\u5F70\u663E\u5FBD\u6D3E\u5A01\u4EEA\u3002"
