@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIBook : UIBase
 {
     public GameObject book;
+    public AudioClip sound;
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class UIBook : UIBase
     public void SwitchBookActive()
     {
         book.SetActive(book.activeSelf? false: true);
+        VisualAudioModule.Instance.Play2DAudioClip(sound);
     }
 
     public void ReplaceBook()

@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class UIMainMenu : UIBase
 {
+    public AudioClip sound;
     public void StartGame()
     {
         GameStateManager.Instance.SwitchState(GameState.BeginingCinematic);
+        VisualAudioModule.Instance.Play2DAudioClip(sound);
         //GameStateManager.Instance.SwitchState(GameState.Phase1_Structure);
         //GameObject.Find("DragSystem").GetComponent<PlayableDirector>().Play();
         StartCoroutine(ToStartTutorial(3.5f));

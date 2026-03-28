@@ -18,6 +18,7 @@ public class DragSystem : MonoBehaviour
         //timeLine = GetComponent<PlayableDirector>();
         //唤醒VisualAudioModule
         VisualAudioModule.Instance.WakeUp();
+        UIManager.Instance.Show<UISetting>();
     }
     // Update is called once per frame
     void Update()

@@ -81,7 +81,7 @@ public class GameStateManager : SingletonMono<GameStateManager>
         SettlementManager.Instance.StopTimer();
         UIManager.Instance.Close(typeof(UIBook));
         yield return new WaitForSeconds(3f);
-        UIManager.Instance.Show<UIDialogBox>().SetMessage("山水之间，心安是家。");
+        UIManager.Instance.Show<UIDialogBox>().SetMessage("青瓦复位，灯火重明。\n一座老宅在你手中再度有了人间气。");
         AnimationManager.Instance.Play();
         yield return new WaitForSeconds(5f);
         UIManager.Instance.Close(typeof(UIDialogBox));

@@ -12,6 +12,13 @@ public class UISettlement : UIBase
     public Text errorCountText;
     private int min;
     private int sec;
+
+    private void Awake()
+    {
+        gameObject.transform.SetParent(GameObject.Find("Canvas").transform);
+        gameObject.transform.SetAsFirstSibling();
+    }
+
     public void GetSettlementInfo(Grade grade)
     {
         min = (int)(SettlementManager.Instance.TimeElapsed / 60f);
@@ -35,10 +42,5 @@ public class UISettlement : UIBase
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void EndGame()
-    {
-        Application.Quit();
     }
 }

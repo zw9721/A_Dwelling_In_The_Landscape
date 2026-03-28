@@ -19,10 +19,13 @@ public class UIFixedImage : MonoBehaviour
     {
         transform.SetParent(target.parent);
         transform.SetAsFirstSibling();
+        currentRectTransform.anchorMin = target.anchorMin;
+        currentRectTransform.anchorMax = target.anchorMax;
+        currentRectTransform.localScale = target.localScale;
         currentRectTransform.anchoredPosition = target.anchoredPosition;
-        image.sprite = targerSprite;
-        image.SetNativeSize();
         currentRectTransform.sizeDelta = target.sizeDelta;
+
+        image.sprite = targerSprite;
         image.color = Color.gray;
     }
 

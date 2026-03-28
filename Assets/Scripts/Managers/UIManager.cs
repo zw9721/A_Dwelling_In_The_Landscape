@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager>
         UIResources.Add(typeof(UIBook), new UIInfo(){resourcePath = "UI/Book", isCache = true});
         UIResources.Add(typeof(UIStartTutorial), new UIInfo(){resourcePath = "UI/StartTutorial", isCache = false});
         UIResources.Add(typeof(UITimer), new UIInfo(){resourcePath = "UI/Timer", isCache = false});
+        UIResources.Add(typeof(UISetting), new UIInfo(){resourcePath = "UI/Setting", isCache = true});
     }
 
     public T Show<T>()
