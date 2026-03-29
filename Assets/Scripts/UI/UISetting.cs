@@ -14,8 +14,8 @@ public class UISetting : MonoBehaviour
     {
         gameObject.transform.SetParent(GameObject.Find("Canvas").transform);
         gameObject.transform.SetAsLastSibling();
-        bgm.value = 1;
-        soundEffect.value = 1;
+        bgm.value = VisualAudioModule.Instance.audioSource.volume;
+        soundEffect.value = VisualAudioModule.Instance.soundEffectVolum;
     }
 
     // Update is called once per frame

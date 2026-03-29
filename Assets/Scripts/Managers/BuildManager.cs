@@ -27,6 +27,7 @@ public class BuildManager : Singleton<BuildManager>
         {
             SettlementManager.Instance.AddError();
             UIManager.Instance.Show<UIDialogBox>().SetMessage("构件与位点不匹配", false);
+            VisualAudioModule.Instance.PlayErrorAudioClip();
             return false;
         }
         
@@ -50,6 +51,7 @@ public class BuildManager : Singleton<BuildManager>
             {
                 SettlementManager.Instance.AddError();
                 UIManager.Instance.Show<UIDialogBox>().SetMessage("请依照工序，先完成承重构件", false);
+                VisualAudioModule.Instance.PlayErrorAudioClip();
             }
         }
         //游戏阶段2

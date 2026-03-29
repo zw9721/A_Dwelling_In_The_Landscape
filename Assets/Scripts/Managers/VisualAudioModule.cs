@@ -8,11 +8,13 @@ public class VisualAudioModule : SingletonMono<VisualAudioModule>
     private int decorationCount = 0;
     public AudioSource audioSource;
     public float soundEffectVolum = 1;
+    public AudioClip errorSound;
 
     void Start()
     {
         BuildManager.Instance.OnBuildSuccess += HandleBuildSuccess;
         InitBGM();
+        errorSound = Resources.Load<AudioClip>("Sounds/error");
     }
 
     private void HandleBuildSuccess(BuildingComponentData data)
@@ -52,11 +54,16 @@ public class VisualAudioModule : SingletonMono<VisualAudioModule>
         Destroy(tempAudioObj, clip.length);
     }
 
+    public void PlayErrorAudioClip()
+    {
+        Play2DAudioClip(errorSound);
+    }
+
     void InitBGM()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
-        audioSource.clip = Resources.Load<AudioClip>("BGM/笛箫为主题");
+        audioSource.clip = Resources.Load<AudioClip>("Sounds/BGM");
         audioSource.Play();
     }
 
